@@ -44,9 +44,27 @@ node build/index.js
 
 在你喜欢的 MCP 客户端中配置此服务器。以下是一些常见客户端的配置示例：
 
-### Cursor AI
+### ChatWise
 
-编辑 `~/.cursor/mcp.json` 文件，添加以下配置：
+复制这段代码，打开 ChatWise，选择 从剪切板导入 JSON
+
+```json
+{
+  "mcpServers": {
+    "mcp-server-bear": {
+      "command": "npx",
+      "args": ["-y", "mcp-server-bear"]
+    }
+  }
+}
+```
+
+<img width="867" alt="image" src="https://github.com/user-attachments/assets/2beaabbf-b5dc-4e93-8f1c-408b10f14974" />
+
+
+### Windsurf
+
+编辑 `~/.codeium/windsurf/mcp_config.jsonn` 文件，添加以下配置：
 
 ```json
 {
