@@ -1,0 +1,33 @@
+{
+  "name": "@chatmcp/mcp-server-bear",
+  "version": "0.0.1",
+  "description": "MCP server for Bear note-taking app",
+  "private": false,
+  "type": "module",
+  "homepage": "https://github.com/chatmcp/mcp-server-bear",
+  "bin": {
+    "mcp-server-bear": "./build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
+    "prepare": "npm run build",
+    "watch": "tsc --watch",
+    "inspector": "npx @modelcontextprotocol/inspector build/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "0.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "typescript": "^5.3.3"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "bear",
+    "notes"
+  ]
+}
