@@ -25,19 +25,21 @@ export class BearClient {
         throw new Error("Title and text are required");
       }
 
-      // Prepare the URL parameters
-      const params = new URLSearchParams();
-      params.append("title", title);
-      params.append("text", text);
+      // 不使用 URLSearchParams，手动构建参数字符串以避免额外的编码问题
+      let params = '';
+      params += `title=${encodeURIComponent(title)}`;
+      params += `&text=${encodeURIComponent(text)}`;
       
       if (tags && tags.length > 0) {
-        params.append("tags", tags.join(","));
+        // 将标签转换为 Bear 期望的格式
+        const tagsString = tags.map(tag => `#${tag}`).join(' ');
+        params += `&tags=${encodeURIComponent(tagsString)}`;
       }
 
-      // Create the x-callback-url
-      const xcallbackUrl = `bear://x-callback-url/create?${params.toString()}`;
+      // 创建 x-callback-url
+      const xcallbackUrl = `bear://x-callback-url/create?${params}`;
       
-      // Open the URL using macOS open command
+      // 使用 macOS open 命令打开 URL
       await execPromise(`open "${xcallbackUrl}"`);
       
       return {
@@ -63,18 +65,18 @@ export class BearClient {
         throw new Error("Either title or id must be provided");
       }
 
-      // Prepare the URL parameters
-      const params = new URLSearchParams();
+      // 手动构建参数字符串
+      let params = '';
       if (title) {
-        params.append("title", title);
+        params += `title=${encodeURIComponent(title)}`;
       } else if (id) {
-        params.append("id", id);
+        params += `id=${encodeURIComponent(id)}`;
       }
 
-      // Create the x-callback-url
-      const xcallbackUrl = `bear://x-callback-url/open-note?${params.toString()}`;
+      // 创建 x-callback-url
+      const xcallbackUrl = `bear://x-callback-url/open-note?${params}`;
       
-      // Open the URL using macOS open command
+      // 使用 macOS open 命令打开 URL
       await execPromise(`open "${xcallbackUrl}"`);
       
       return {
@@ -100,18 +102,18 @@ export class BearClient {
         throw new Error("Search term is required");
       }
 
-      // Prepare the URL parameters
-      const params = new URLSearchParams();
-      params.append("term", term);
+      // 手动构建参数字符串
+      let params = '';
+      params += `term=${encodeURIComponent(term)}`;
       
       if (tag) {
-        params.append("tag", tag);
+        params += `&tag=${encodeURIComponent(tag)}`;
       }
 
-      // Create the x-callback-url
-      const xcallbackUrl = `bear://x-callback-url/search?${params.toString()}`;
+      // 创建 x-callback-url
+      const xcallbackUrl = `bear://x-callback-url/search?${params}`;
       
-      // Open the URL using macOS open command
+      // 使用 macOS open 命令打开 URL
       await execPromise(`open "${xcallbackUrl}"`);
       
       return {

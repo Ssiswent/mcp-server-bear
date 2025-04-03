@@ -1,10 +1,10 @@
 {
-  "name": "@chatmcp/mcp-server-bear",
-  "version": "0.0.1",
+  "name": "mcp-server-bear",
+  "version": "0.0.2",
   "description": "MCP server for Bear note-taking app",
   "private": false,
   "type": "module",
-  "homepage": "https://github.com/chatmcp/mcp-server-bear",
+  "homepage": "https://github.com/Ssiswent/mcp-server-bear",
   "bin": {
     "mcp-server-bear": "./build/index.js"
   },
