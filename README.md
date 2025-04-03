@@ -20,20 +20,20 @@
 ### 方法 1：使用 npx（推荐）
 
 ```bash
-npx @chatmcp/mcp-server-bear
+npx mcp-server-bear
 ```
 
 ### 方法 2：全局安装
 
 ```bash
-npm install -g @chatmcp/mcp-server-bear
+npm install -g mcp-server-bear
 mcp-server-bear
 ```
 
 ### 方法 3：从源码安装
 
 ```bash
-git clone https://github.com/chatmcp/mcp-server-bear.git
+git clone https://github.com/Ssiswent/mcp-server-bear.git
 cd mcp-server-bear
 npm install
 npm run build
@@ -53,7 +53,7 @@ node build/index.js
   "mcpServers": {
     "mcp-server-bear": {
       "command": "npx",
-      "args": ["-y", "@chatmcp/mcp-server-bear"]
+      "args": ["-y", "mcp-server-bear"]
     }
   }
 }
@@ -65,7 +65,7 @@ node build/index.js
 
 - 名称：Bear MCP 服务器
 - 命令：npx
-- 参数：-y @chatmcp/mcp-server-bear
+- 参数：-y mcp-server-bear
 
 ## 使用示例
 
@@ -103,7 +103,7 @@ AI 会理解你的意图，并使用相应的工具与 Bear 应用交互。
 
 ```bash
 # 克隆项目
-git clone https://github.com/chatmcp/mcp-server-bear.git
+git clone https://github.com/Ssiswent/mcp-server-bear.git
 cd mcp-server-bear
 
 # 安装依赖
