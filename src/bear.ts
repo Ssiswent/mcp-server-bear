@@ -25,14 +25,21 @@ export class BearClient {
         throw new Error("Title and text are required");
       }
 
+      // 检查文本是否以与标题相同的一级标题开头
+      const titlePattern = new RegExp(`^\\s*#\\s+${title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*$`, 'm');
+      if (titlePattern.test(text)) {
+        // 如果文本以与标题相同的一级标题开头，则移除这个标题行
+        text = text.replace(titlePattern, '').trim();
+      }
+
       // 不使用 URLSearchParams，手动构建参数字符串以避免额外的编码问题
       let params = '';
       params += `title=${encodeURIComponent(title)}`;
       params += `&text=${encodeURIComponent(text)}`;
       
       if (tags && tags.length > 0) {
-        // 将标签转换为 Bear 期望的格式
-        const tagsString = tags.map(tag => `#${tag}`).join(' ');
+        // 标签应该使用逗号分隔，不需要 # 前缀
+        const tagsString = tags.join(',');
         params += `&tags=${encodeURIComponent(tagsString)}`;
       }
 

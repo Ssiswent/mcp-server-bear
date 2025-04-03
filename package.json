@@ -1,6 +1,6 @@
 {
   "name": "mcp-server-bear",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "MCP server for Bear note-taking app",
   "private": false,
   "type": "module",
